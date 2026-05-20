@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="vue\Form1.cs">
+    <Compile Include="vue\frmPersonnel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vue\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="vue\frmPersonnel.Designer.cs">
+      <DependentUpon>frmPersonnel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vue\frmAuthentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vue\frmAuthentification.Designer.cs">
+      <DependentUpon>frmAuthentification.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +69,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vue\frmAuthentification.resx">
+      <DependentUpon>frmAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vue\frmPersonnel.resx">
+      <DependentUpon>frmPersonnel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

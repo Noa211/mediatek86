@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace mediatek86
+namespace mediatek86.vue
 {
-    public partial class Form1 : Form
+    public partial class frmPersonnel : Form
     {
-        public Form1()
+        public frmPersonnel()
         {
             InitializeComponent();
         }
