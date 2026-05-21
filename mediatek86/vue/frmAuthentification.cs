@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Application de gestion du personnel
+/// </summary>
 namespace mediatek86
 {
     public partial class frmAuthentification : Form
@@ -15,6 +18,11 @@ namespace mediatek86
         public frmAuthentification()
         {
             InitializeComponent();
+        }
+
+        private void frmAuthentification_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

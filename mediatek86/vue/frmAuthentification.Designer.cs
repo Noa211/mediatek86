@@ -90,6 +90,7 @@ namespace mediatek86
             this.Controls.Add(this.label1);
             this.Name = "frmAuthentification";
             this.Text = "Authentification";
+            this.Load += new System.EventHandler(this.frmAuthentification_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

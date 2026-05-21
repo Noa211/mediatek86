@@ -48,25 +48,25 @@ namespace mediatek86.vue
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grbAbsences = new System.Windows.Forms.GroupBox();
-            this.dgvAbsences = new System.Windows.Forms.DataGridView();
-            this.btnModifAbs = new System.Windows.Forms.Button();
-            this.btnSupprimerAbs = new System.Windows.Forms.Button();
-            this.btnRetour = new System.Windows.Forms.Button();
             this.grbAddAbs = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
-            this.dtpFin = new System.Windows.Forms.DateTimePicker();
-            this.cmbMotif = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnSaveAbs = new System.Windows.Forms.Button();
             this.btnAnnulAbs = new System.Windows.Forms.Button();
+            this.btnSaveAbs = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbMotif = new System.Windows.Forms.ComboBox();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpDebut = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnRetour = new System.Windows.Forms.Button();
+            this.btnSupprimerAbs = new System.Windows.Forms.Button();
+            this.btnModifAbs = new System.Windows.Forms.Button();
+            this.dgvAbsences = new System.Windows.Forms.DataGridView();
             this.grbPersonnel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).BeginInit();
             this.grbAddPer.SuspendLayout();
             this.grbAbsences.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).BeginInit();
             this.grbAddAbs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).BeginInit();
             this.SuspendLayout();
             // 
             // grbPersonnel
@@ -257,46 +257,6 @@ namespace mediatek86.vue
             this.grbAbsences.TabStop = false;
             this.grbAbsences.Text = "absences";
             // 
-            // dgvAbsences
-            // 
-            this.dgvAbsences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAbsences.Location = new System.Drawing.Point(7, 22);
-            this.dgvAbsences.MultiSelect = false;
-            this.dgvAbsences.Name = "dgvAbsences";
-            this.dgvAbsences.ReadOnly = true;
-            this.dgvAbsences.RowHeadersWidth = 51;
-            this.dgvAbsences.RowTemplate.Height = 24;
-            this.dgvAbsences.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAbsences.Size = new System.Drawing.Size(744, 150);
-            this.dgvAbsences.TabIndex = 0;
-            // 
-            // btnModifAbs
-            // 
-            this.btnModifAbs.Location = new System.Drawing.Point(6, 178);
-            this.btnModifAbs.Name = "btnModifAbs";
-            this.btnModifAbs.Size = new System.Drawing.Size(98, 27);
-            this.btnModifAbs.TabIndex = 1;
-            this.btnModifAbs.Text = "modifier";
-            this.btnModifAbs.UseVisualStyleBackColor = true;
-            // 
-            // btnSupprimerAbs
-            // 
-            this.btnSupprimerAbs.Location = new System.Drawing.Point(110, 178);
-            this.btnSupprimerAbs.Name = "btnSupprimerAbs";
-            this.btnSupprimerAbs.Size = new System.Drawing.Size(97, 27);
-            this.btnSupprimerAbs.TabIndex = 2;
-            this.btnSupprimerAbs.Text = "supprimer";
-            this.btnSupprimerAbs.UseVisualStyleBackColor = true;
-            // 
-            // btnRetour
-            // 
-            this.btnRetour.Location = new System.Drawing.Point(676, 178);
-            this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(75, 27);
-            this.btnRetour.TabIndex = 3;
-            this.btnRetour.Text = "retour";
-            this.btnRetour.UseVisualStyleBackColor = true;
-            // 
             // grbAddAbs
             // 
             this.grbAddAbs.Controls.Add(this.btnAnnulAbs);
@@ -314,55 +274,14 @@ namespace mediatek86.vue
             this.grbAddAbs.TabStop = false;
             this.grbAddAbs.Text = "ajouter une absence";
             // 
-            // label5
+            // btnAnnulAbs
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 34);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(96, 17);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "date de début";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(27, 82);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 17);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "date de fin";
-            // 
-            // dtpDebut
-            // 
-            this.dtpDebut.Location = new System.Drawing.Point(108, 29);
-            this.dtpDebut.Name = "dtpDebut";
-            this.dtpDebut.Size = new System.Drawing.Size(200, 22);
-            this.dtpDebut.TabIndex = 2;
-            // 
-            // dtpFin
-            // 
-            this.dtpFin.CustomFormat = "";
-            this.dtpFin.Location = new System.Drawing.Point(108, 77);
-            this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(200, 22);
-            this.dtpFin.TabIndex = 3;
-            // 
-            // cmbMotif
-            // 
-            this.cmbMotif.FormattingEnabled = true;
-            this.cmbMotif.Location = new System.Drawing.Point(402, 31);
-            this.cmbMotif.Name = "cmbMotif";
-            this.cmbMotif.Size = new System.Drawing.Size(206, 24);
-            this.cmbMotif.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(357, 34);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 17);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "motif";
+            this.btnAnnulAbs.Location = new System.Drawing.Point(526, 76);
+            this.btnAnnulAbs.Name = "btnAnnulAbs";
+            this.btnAnnulAbs.Size = new System.Drawing.Size(82, 28);
+            this.btnAnnulAbs.TabIndex = 7;
+            this.btnAnnulAbs.Text = "annuler";
+            this.btnAnnulAbs.UseVisualStyleBackColor = true;
             // 
             // btnSaveAbs
             // 
@@ -373,14 +292,95 @@ namespace mediatek86.vue
             this.btnSaveAbs.Text = "enregistrer";
             this.btnSaveAbs.UseVisualStyleBackColor = true;
             // 
-            // btnAnnulAbs
+            // label7
             // 
-            this.btnAnnulAbs.Location = new System.Drawing.Point(526, 76);
-            this.btnAnnulAbs.Name = "btnAnnulAbs";
-            this.btnAnnulAbs.Size = new System.Drawing.Size(82, 28);
-            this.btnAnnulAbs.TabIndex = 7;
-            this.btnAnnulAbs.Text = "annuler";
-            this.btnAnnulAbs.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(357, 34);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 17);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "motif";
+            // 
+            // cmbMotif
+            // 
+            this.cmbMotif.FormattingEnabled = true;
+            this.cmbMotif.Location = new System.Drawing.Point(402, 31);
+            this.cmbMotif.Name = "cmbMotif";
+            this.cmbMotif.Size = new System.Drawing.Size(206, 24);
+            this.cmbMotif.TabIndex = 4;
+            // 
+            // dtpFin
+            // 
+            this.dtpFin.CustomFormat = "";
+            this.dtpFin.Location = new System.Drawing.Point(108, 77);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(200, 22);
+            this.dtpFin.TabIndex = 3;
+            // 
+            // dtpDebut
+            // 
+            this.dtpDebut.Location = new System.Drawing.Point(108, 29);
+            this.dtpDebut.Name = "dtpDebut";
+            this.dtpDebut.Size = new System.Drawing.Size(200, 22);
+            this.dtpDebut.TabIndex = 2;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(27, 82);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 17);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "date de fin";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 34);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(96, 17);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "date de début";
+            // 
+            // btnRetour
+            // 
+            this.btnRetour.Location = new System.Drawing.Point(676, 178);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(75, 27);
+            this.btnRetour.TabIndex = 3;
+            this.btnRetour.Text = "retour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            // 
+            // btnSupprimerAbs
+            // 
+            this.btnSupprimerAbs.Location = new System.Drawing.Point(110, 178);
+            this.btnSupprimerAbs.Name = "btnSupprimerAbs";
+            this.btnSupprimerAbs.Size = new System.Drawing.Size(97, 27);
+            this.btnSupprimerAbs.TabIndex = 2;
+            this.btnSupprimerAbs.Text = "supprimer";
+            this.btnSupprimerAbs.UseVisualStyleBackColor = true;
+            // 
+            // btnModifAbs
+            // 
+            this.btnModifAbs.Location = new System.Drawing.Point(6, 178);
+            this.btnModifAbs.Name = "btnModifAbs";
+            this.btnModifAbs.Size = new System.Drawing.Size(98, 27);
+            this.btnModifAbs.TabIndex = 1;
+            this.btnModifAbs.Text = "modifier";
+            this.btnModifAbs.UseVisualStyleBackColor = true;
+            // 
+            // dgvAbsences
+            // 
+            this.dgvAbsences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAbsences.Location = new System.Drawing.Point(7, 22);
+            this.dgvAbsences.MultiSelect = false;
+            this.dgvAbsences.Name = "dgvAbsences";
+            this.dgvAbsences.ReadOnly = true;
+            this.dgvAbsences.RowHeadersWidth = 51;
+            this.dgvAbsences.RowTemplate.Height = 24;
+            this.dgvAbsences.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAbsences.Size = new System.Drawing.Size(744, 150);
+            this.dgvAbsences.TabIndex = 0;
             // 
             // frmPersonnel
             // 
@@ -392,14 +392,15 @@ namespace mediatek86.vue
             this.Controls.Add(this.grbPersonnel);
             this.Name = "frmPersonnel";
             this.Text = "Gestion du personnel";
+            this.Load += new System.EventHandler(this.frmPersonnel_Load);
             this.grbPersonnel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).EndInit();
             this.grbAddPer.ResumeLayout(false);
             this.grbAddPer.PerformLayout();
             this.grbAbsences.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).EndInit();
             this.grbAddAbs.ResumeLayout(false);
             this.grbAddAbs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).EndInit();
             this.ResumeLayout(false);
 
         }
