@@ -77,6 +77,7 @@ namespace mediatek86
             this.btnConnect.TabIndex = 4;
             this.btnConnect.Text = "se connecter";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // frmAuthentification
             // 
@@ -90,7 +91,6 @@ namespace mediatek86
             this.Controls.Add(this.label1);
             this.Name = "frmAuthentification";
             this.Text = "Authentification";
-            this.Load += new System.EventHandler(this.frmAuthentification_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
