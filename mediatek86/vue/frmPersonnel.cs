@@ -65,7 +65,13 @@ namespace mediatek86.vue
                 Service service = (Service)bdgService.List[bdgService.Position];
                 if (enCoursDeModifPersonnel)
                 {
-                    return;
+                    Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                    personnel.Nom = txtNom.Text;
+                    personnel.Prenom = txtPrenom.Text;
+                    personnel.Tel = txtTel.Text;
+                    personnel.Mail = txtMail.Text;
+                    personnel.Service = service;
+                    controller.UpdatePersonnel(personnel);
                 }
                 else
                 {
@@ -113,6 +119,24 @@ namespace mediatek86.vue
                     controller.DelPersonnel(personnel);
                     RemplirListePersonnel();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
+            }
+        }
+
+        private void btnModifierPer_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.SelectedRows.Count > 0)
+            {
+                EnCoursModifPersonnel(true);
+                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                txtNom.Text = personnel.Nom;
+                txtPrenom.Text = personnel.Prenom;
+                txtTel.Text = personnel.Tel;
+                txtMail.Text = personnel.Mail;
+                cmbService.SelectedIndex = cmbService.FindStringExact(personnel.Service.Nom);
             }
             else
             {

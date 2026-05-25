@@ -42,5 +42,10 @@ namespace mediatek86.controlleur
         {
             personnelAccess.DelPersonnel(personnel);
         }
+
+        public void UpdatePersonnel(Personnel personnel)
+        {
+            personnelAccess.UpdatePersonnel(personnel);
+        }
     }
 }

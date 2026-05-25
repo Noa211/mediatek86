@@ -9,10 +9,10 @@ namespace mediatek86.modele
     class Personnel
     {
         public int Idpersonnel { get; }
-        public string Nom { get; }
-        public string Prenom { get; }
-        public string Tel { get; }
-        public string Mail { get; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string Tel { get; set; }
+        public string Mail { get; set; }
         public Service Service { get; set; }
 
         /// <summary>

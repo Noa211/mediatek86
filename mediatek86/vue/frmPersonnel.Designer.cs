@@ -109,6 +109,7 @@ namespace mediatek86.vue
             this.btnModifierPer.TabIndex = 1;
             this.btnModifierPer.Text = "modifier";
             this.btnModifierPer.UseVisualStyleBackColor = true;
+            this.btnModifierPer.Click += new System.EventHandler(this.btnModifierPer_Click);
             // 
             // dgvPersonnel
             // 
