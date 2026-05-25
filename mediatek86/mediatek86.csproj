@@ -88,8 +88,11 @@
   <ItemGroup>
     <Compile Include="bddmanager\BddManager.cs" />
     <Compile Include="controlleur\FrmAuthentificationController.cs" />
+    <Compile Include="controlleur\FrmPersonnelController.cs" />
+    <Compile Include="dal\AbsenceAccess.cs" />
     <Compile Include="dal\Access.cs" />
     <Compile Include="dal\PersonnelAccess.cs" />
+    <Compile Include="dal\ServiceAccess.cs" />
     <Compile Include="modele\Absence.cs" />
     <Compile Include="modele\Motif.cs" />
     <Compile Include="modele\Personnel.cs" />

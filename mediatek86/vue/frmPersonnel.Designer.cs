@@ -160,6 +160,7 @@ namespace mediatek86.vue
             this.btnSavePer.TabIndex = 10;
             this.btnSavePer.Text = "enregistrer";
             this.btnSavePer.UseVisualStyleBackColor = true;
+            this.btnSavePer.Click += new System.EventHandler(this.btnSavePer_Click);
             // 
             // cmbService
             // 
@@ -392,7 +393,6 @@ namespace mediatek86.vue
             this.Controls.Add(this.grbPersonnel);
             this.Name = "frmPersonnel";
             this.Text = "Gestion du personnel";
-            this.Load += new System.EventHandler(this.frmPersonnel_Load);
             this.grbPersonnel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).EndInit();
             this.grbAddPer.ResumeLayout(false);

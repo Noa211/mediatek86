@@ -21,5 +21,10 @@ namespace mediatek86.modele
             this.Idservice = idservice;
             this.Nom = nom;
         }
+
+        public override string ToString()
+        {
+            return this.Nom;
+        }
     }
 }

@@ -59,5 +59,66 @@ namespace mediatek86.dal
             }
             return false;
         }
+
+        public List<Personnel> GetPersonnel()
+        {
+            List<Personnel> lePersonnel = new List<Personnel>();
+            if (access.Manager != null)
+            {
+                string req = "select p.idpersonnel as idpersonnel, p.nom as nom, p.prenom as prenom, p.tel as tel, p.mail as mail, s.idservice as idservice, s.nom as nomservice ";
+                req += "from personnel p left join service s on (p.idservice = s.idservice) ";
+                req += "order by nom, prenom;";
+                try
+                {
+                    List<Object[]> records = access.Manager.ReqSelect(req);
+                    if (records != null)
+                    {
+                        Log.Debug("PersonnelAccess.GetPersonnel nb records = {0}", records.Count);
+                        foreach (Object[] record in records)
+                        {
+                            Log.Debug("PersonnelAccess.GetPersonnel Service : id={0} nom={1}", record[5], record[6]);
+                            Log.Debug("PersonnelAccess.GetPersonnel Personnel : id={0} nom={1} prenom={2} tel={3} mail={4} ", record[0], record[1], record[2], record[3], record[4]);
+                            Service leService = new Service((int)record[5], (string)record[6]);
+                            Personnel personnel = new Personnel((int)record[0], (string)record[1], (string)record[2], (string)record[3], (string)record[4], leService);
+                            lePersonnel.Add(personnel);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("PersonnelAccess.GetPersonnel catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+            return lePersonnel;
+        }
+
+        public void AddPersonnel(Personnel personnel)
+        {
+            if (access.Manager != null)
+            {
+                string req = "insert into personnel(nom, prenom, tel, mail, idservice) ";
+                req += "values (@nom, @prenom, @tel, @mail, @idservice);";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@nom", personnel.Nom },
+                    { "@prenom", personnel.Prenom },
+                    { "@tel", personnel.Tel },
+                    { "@mail", personnel.Mail },
+                    { "@idservice", personnel.Service.Idservice }
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("PersonnelAccess.AddPersonnel catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
     }
 }

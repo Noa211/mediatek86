@@ -13,7 +13,7 @@ namespace mediatek86.modele
         public string Prenom { get; }
         public string Tel { get; }
         public string Mail { get; }
-        public Service Service { get; }
+        public Service Service { get; set; }
 
         /// <summary>
         /// Valorise les propriétés
