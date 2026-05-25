@@ -99,6 +99,7 @@ namespace mediatek86.vue
             this.btnSupprimerPer.TabIndex = 2;
             this.btnSupprimerPer.Text = "supprimer";
             this.btnSupprimerPer.UseVisualStyleBackColor = true;
+            this.btnSupprimerPer.Click += new System.EventHandler(this.btnSupprimerPer_Click);
             // 
             // btnModifierPer
             // 
@@ -151,6 +152,7 @@ namespace mediatek86.vue
             this.btnAnnulPer.TabIndex = 11;
             this.btnAnnulPer.Text = "annuler";
             this.btnAnnulPer.UseVisualStyleBackColor = true;
+            this.btnAnnulPer.Click += new System.EventHandler(this.btnAnnulPer_Click);
             // 
             // btnSavePer
             // 

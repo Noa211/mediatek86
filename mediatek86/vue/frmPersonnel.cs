@@ -26,6 +26,8 @@ namespace mediatek86.vue
 
         private readonly BindingSource bdgService = new BindingSource();
 
+        private readonly String titreFenetreInformation = "Information";
+
         public frmPersonnel()
         {
             InitializeComponent();
@@ -90,6 +92,31 @@ namespace mediatek86.vue
                 txtPrenom.Text = "";
                 txtTel.Text = "";
                 txtMail.Text = "";
+            }
+        }
+
+        private void btnAnnulPer_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                EnCoursModifPersonnel(false);
+            }
+        }
+
+        private void btnSupprimerPer_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                if (MessageBox.Show("Voulez-vous vraiment supprimer " + personnel.Nom + " " + personnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controller.DelPersonnel(personnel);
+                    RemplirListePersonnel();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
             }
         }
     }

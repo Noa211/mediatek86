@@ -20,6 +20,7 @@ namespace mediatek86.controlleur
         {
             personnelAccess = new PersonnelAccess();
             absenceAccess = new AbsenceAccess();
+            serviceAccess = new ServiceAccess();
         }
 
         public List<Personnel> GetPersonnel()
@@ -35,6 +36,11 @@ namespace mediatek86.controlleur
         public void AddPersonnel(Personnel personnel)
         {
             personnelAccess.AddPersonnel(personnel);
+        }
+
+        public void DelPersonnel(Personnel personnel)
+        {
+            personnelAccess.DelPersonnel(personnel);
         }
     }
 }
