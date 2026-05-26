@@ -33,5 +33,10 @@ namespace mediatek86.modele
             this.Mail = mail;
             this.Service = service;
         }
+
+        public override string ToString()
+        {
+            return (this.Nom + " " + this.Prenom);
+        }
     }
 }

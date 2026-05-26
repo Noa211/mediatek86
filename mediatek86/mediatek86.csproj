@@ -91,6 +91,7 @@
     <Compile Include="controlleur\FrmPersonnelController.cs" />
     <Compile Include="dal\AbsenceAccess.cs" />
     <Compile Include="dal\Access.cs" />
+    <Compile Include="dal\MotifAccess.cs" />
     <Compile Include="dal\PersonnelAccess.cs" />
     <Compile Include="dal\ServiceAccess.cs" />
     <Compile Include="modele\Absence.cs" />

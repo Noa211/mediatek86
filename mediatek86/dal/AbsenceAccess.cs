@@ -1,4 +1,6 @@
-﻿using System;
+﻿using mediatek86.modele;
+using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,46 @@ namespace mediatek86.dal
         public AbsenceAccess()
         {
             access = Access.GetInstance();
+        }
+
+        public List<Absence> GetLesAbsences(Personnel personnel)
+        {
+            List<Absence> lesAbsences = new List<Absence>();
+            if (access.Manager != null)
+            {
+                string req = "select p.idpersonnel as idpersonnel, p.nom as nom, p.prenom as prenom, a.datedebut as datedebut, a.datefin as datefin, m.idmotif as idmotif, m.libelle as libelle ";
+                req += "from absence a join personnel p on (a.idpersonnel = p.idpersonnel) join motif m on (a.idmotif = m.idmotif) ";
+                req += "where p.idpersonnel = @idpersonnel ";
+                req += "order by datedebut desc;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@idpersonnel", personnel.Idpersonnel }
+                };
+                try
+                {
+                    List<Object[]> records = access.Manager.ReqSelect(req, parameters);
+                    if (records != null)
+                    {
+                        Log.Debug("AbsenceAccess.GetLesAbsences nb records = {0}", records.Count);
+                        foreach (Object[] record in records)
+                        {
+                            Log.Debug("AbsenceAccess.GetLesAbsences Personnel : id={0} nom={1} prenom={2}", record[0], record[1], record[2]);
+                            Log.Debug("AbsenceAccess.GetLesAbsences Absence : datedebut={0}, datefin={1}", record[3], record[4]);
+                            Log.Debug("AbsenceAccess.GetLesAbsences Motif : id={0} libelle={1}", record[5], record[6]);
+                            Motif motif = new Motif((int)record[5], (string)record[6]);
+                            Absence absence = new Absence(personnel, (DateTime)record[3], (DateTime)record[4], motif);
+                            lesAbsences.Add(absence);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("AbsenceAccess.GetLesAbsences catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+            return lesAbsences;
         }
     }
 }

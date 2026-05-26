@@ -16,11 +16,14 @@ namespace mediatek86.controlleur
 
         private readonly ServiceAccess serviceAccess;
 
+        private readonly MotifAccess motifAccess;
+
         public FrmPersonnelController()
         {
             personnelAccess = new PersonnelAccess();
             absenceAccess = new AbsenceAccess();
             serviceAccess = new ServiceAccess();
+            motifAccess = new MotifAccess();
         }
 
         public List<Personnel> GetPersonnel()
@@ -46,6 +49,16 @@ namespace mediatek86.controlleur
         public void UpdatePersonnel(Personnel personnel)
         {
             personnelAccess.UpdatePersonnel(personnel);
+        }
+
+        public List<Motif> GetLesMotifs()
+        {
+            return motifAccess.GetLesMotifs();
+        }
+
+        public List<Absence> GetLesAbsences(Personnel personnel)
+        {
+            return absenceAccess.GetLesAbsences(personnel);
         }
     }
 }

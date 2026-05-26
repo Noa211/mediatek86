@@ -26,6 +26,10 @@ namespace mediatek86.vue
 
         private readonly BindingSource bdgService = new BindingSource();
 
+        private readonly BindingSource bdgMotif = new BindingSource();
+
+        private readonly BindingSource bdgAbsence = new BindingSource();
+
         private readonly String titreFenetreInformation = "Information";
 
         public frmPersonnel()
@@ -39,6 +43,7 @@ namespace mediatek86.vue
             controller = new FrmPersonnelController();
             RemplirListePersonnel();
             RemplirListeService();
+            RemplirListeMotif();
             EnCoursModifPersonnel(false);
         }
 
@@ -58,6 +63,20 @@ namespace mediatek86.vue
             cmbService.DataSource = bdgService;
         }
 
+        private void RemplirListeMotif()
+        {
+            List<Motif> lesMotifs = controller.GetLesMotifs();
+            bdgMotif.DataSource = lesMotifs;
+            cmbMotif.DataSource = bdgMotif;
+        }
+
+        private void RemplirListeAbsence(Personnel personnel)
+        {
+            List<Absence> lesAbsences = controller.GetLesAbsences(personnel);
+            bdgAbsence.DataSource = lesAbsences;
+            dgvAbsences.DataSource = bdgAbsence;
+        }
+
         private void btnSavePer_Click(object sender, EventArgs e)
         {
             if (!txtNom.Text.Equals("") && !txtPrenom.Text.Equals("") && !txtTel.Text.Equals("") && !txtMail.Text.Equals("") && cmbService.SelectedIndex != -1)
@@ -65,13 +84,16 @@ namespace mediatek86.vue
                 Service service = (Service)bdgService.List[bdgService.Position];
                 if (enCoursDeModifPersonnel)
                 {
-                    Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
-                    personnel.Nom = txtNom.Text;
-                    personnel.Prenom = txtPrenom.Text;
-                    personnel.Tel = txtTel.Text;
-                    personnel.Mail = txtMail.Text;
-                    personnel.Service = service;
-                    controller.UpdatePersonnel(personnel);
+                    if (MessageBox.Show("Voulez-vous vraiment modifier ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                        personnel.Nom = txtNom.Text;
+                        personnel.Prenom = txtPrenom.Text;
+                        personnel.Tel = txtTel.Text;
+                        personnel.Mail = txtMail.Text;
+                        personnel.Service = service;
+                        controller.UpdatePersonnel(personnel);
+                    }
                 }
                 else
                 {
@@ -142,6 +164,31 @@ namespace mediatek86.vue
             {
                 MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
             }
+        }
+
+        private void btnGererAbs_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnel.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                RemplirListeAbsence(personnel);
+                GererAbsences(true);
+                
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
+            }
+        }
+
+        private void GererAbsences(Boolean modif)
+        {
+            grbAbsences.Enabled = modif;
+            grbPersonnel.Enabled = !modif;
+            grbAddPer.Enabled = !modif;
+            dtpDebut.Value = System.DateTime.Today;
+            dtpFin.Value = System.DateTime.Today;
+            cmbMotif.SelectedIndex = -1;
         }
     }
 }

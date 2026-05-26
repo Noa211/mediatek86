@@ -21,5 +21,10 @@ namespace mediatek86.modele
             this.Idmotif = idmotif;
             this.Libelle = libelle;
         }
+
+        public override string ToString()
+        {
+            return this.Libelle;
+        }
     }
 }

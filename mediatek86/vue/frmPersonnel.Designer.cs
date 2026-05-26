@@ -90,6 +90,7 @@ namespace mediatek86.vue
             this.btnGererAbs.TabIndex = 3;
             this.btnGererAbs.Text = "gérer les absences";
             this.btnGererAbs.UseVisualStyleBackColor = true;
+            this.btnGererAbs.Click += new System.EventHandler(this.btnGererAbs_Click);
             // 
             // btnSupprimerPer
             // 

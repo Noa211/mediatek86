@@ -12,8 +12,8 @@ namespace mediatek86.modele
     class Absence
     {
         public Personnel Personnel { get; }
-        public string Datedebut { get; }
-        public string Datefin { get; }
+        public DateTime Datedebut { get; }
+        public DateTime Datefin { get; }
         public Motif Motif { get; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace mediatek86.modele
         /// <param name="datedebut"></param>
         /// <param name="datefin"></param>
         /// <param name="motif"></param>
-        public Absence(Personnel personnel, string datedebut, string datefin, Motif motif)
+        public Absence(Personnel personnel, DateTime datedebut, DateTime datefin, Motif motif)
         {
             this.Personnel = personnel;
             this.Datedebut = datedebut;
