@@ -286,6 +286,7 @@ namespace mediatek86.vue
             this.btnAnnulAbs.TabIndex = 7;
             this.btnAnnulAbs.Text = "annuler";
             this.btnAnnulAbs.UseVisualStyleBackColor = true;
+            this.btnAnnulAbs.Click += new System.EventHandler(this.btnAnnulAbs_Click);
             // 
             // btnSaveAbs
             // 
@@ -364,6 +365,7 @@ namespace mediatek86.vue
             this.btnSupprimerAbs.TabIndex = 2;
             this.btnSupprimerAbs.Text = "supprimer";
             this.btnSupprimerAbs.UseVisualStyleBackColor = true;
+            this.btnSupprimerAbs.Click += new System.EventHandler(this.btnSupprimerAbs_Click);
             // 
             // btnModifAbs
             // 

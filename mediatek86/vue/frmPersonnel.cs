@@ -233,5 +233,30 @@ namespace mediatek86.vue
                 dtpFin.Value = System.DateTime.Today;
             }
         }
+
+        private void btnAnnulAbs_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                EnCoursModifAbsence(false);
+            }
+        }
+
+        private void btnSupprimerAbs_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                Absence absence = (Absence)bdgAbsence.List[bdgAbsence.Position];
+                if (MessageBox.Show("Voulez-vous vraiment supprimer cette absence ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controller.DelAbsence(absence);
+                    RemplirListeAbsence(personnelModifAbs);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
+            }
+        }
     }
 }

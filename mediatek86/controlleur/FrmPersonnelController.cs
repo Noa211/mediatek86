@@ -65,5 +65,10 @@ namespace mediatek86.controlleur
         {
             absenceAccess.AddAbsence(absence);
         }
+
+        public void DelAbsence(Absence absence)
+        {
+            absenceAccess.DelAbsence(absence);
+        }
     }
 }

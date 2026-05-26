@@ -63,7 +63,7 @@ namespace mediatek86.dal
             {
                 string req = "insert into absence(idpersonnel, datedebut, datefin, idmotif) ";
                 req += "values (@idpersonnel, @datedebut, @datefin, @idmotif);";
-                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
                     { "@idpersonnel", absence.Personnel.Idpersonnel },
                     { "@datedebut", absence.Datedebut },
@@ -78,6 +78,29 @@ namespace mediatek86.dal
                 {
                     Console.WriteLine(e.Message);
                     Log.Error("AbsenceAccess.AddAbsence catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
+
+        public void DelAbsence(Absence absence)
+        {
+            if (access.Manager != null)
+            {
+                string req = "delete from absence where idpersonnel = @idpersonnel and datedebut = @datedebut;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@idpersonnel", absence.Personnel.Idpersonnel },
+                    { "@datedebut", absence.Datedebut }
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("AbsenceAccess.DelAbsence catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
             }
