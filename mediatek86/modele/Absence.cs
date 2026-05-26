@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Package des classes métiers des tables de la bdd
-/// </summary>
 namespace mediatek86.modele
 {
+    /// <summary>
+    /// Classe métier pour les absences
+    /// </summary>
     class Absence
     {
         public Personnel Personnel { get; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediatek86.modele
 {
+    /// <summary>
+    /// Classe métier du responsable
+    /// </summary>
     class Responsable
     {
         public string Login { get; }

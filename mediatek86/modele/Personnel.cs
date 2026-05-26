@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediatek86.modele
 {
+    /// <summary>
+    /// Classe métier du personnel
+    /// </summary>
     class Personnel
     {
         public int Idpersonnel { get; }
@@ -34,6 +37,10 @@ namespace mediatek86.modele
             this.Service = service;
         }
 
+        /// <summary>
+        /// Définit l'information à afficher (le nom et le prénom)
+        /// </summary>
+        /// <returns>nom et prénom du membre du personnel</returns>
         public override string ToString()
         {
             return (this.Nom + " " + this.Prenom);

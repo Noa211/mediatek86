@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace mediatek86.dal
 {
+    /// <summary>
+    /// Classe permettant de gérer les demandes concernant les motifs
+    /// </summary>
     class MotifAccess
     {
         /// <summary>
@@ -23,6 +26,10 @@ namespace mediatek86.dal
             access = Access.GetInstance();
         }
 
+        /// <summary>
+        /// Récupère et retourne les motifs
+        /// </summary>
+        /// <returns>liste de motifs</returns>
         public List<Motif> GetLesMotifs()
         {
             List<Motif> lesMotifs = new List<Motif>();

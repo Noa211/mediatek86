@@ -8,15 +8,29 @@ using System.Threading.Tasks;
 
 namespace mediatek86.dal
 {
+    /// <summary>
+    /// Classe permettant de gérer les demandes concernant les absences
+    /// </summary>
     class AbsenceAccess
     {
+        /// <summary>
+        /// Instance unique de l'accès aux données
+        /// </summary>
         private readonly Access access = null;
 
+        /// <summary>
+        /// Constructeur pour créer l'accès aux données
+        /// </summary>
         public AbsenceAccess()
         {
             access = Access.GetInstance();
         }
 
+        /// <summary>
+        /// Récupère et retourne les absences d'un certain membre du personnel
+        /// </summary>
+        /// <param name="personnel">objet personnel lié aux absences</param>
+        /// <returns>liste des absences</returns>
         public List<Absence> GetLesAbsences(Personnel personnel)
         {
             List<Absence> lesAbsences = new List<Absence>();
@@ -57,6 +71,10 @@ namespace mediatek86.dal
             return lesAbsences;
         }
 
+        /// <summary>
+        /// Demande d'ajout d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à ajouter</param>
         public void AddAbsence(Absence absence)
         {
             if (access.Manager != null)
@@ -83,6 +101,10 @@ namespace mediatek86.dal
             }
         }
 
+        /// <summary>
+        /// Demande de suppresion d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à supprimer</param>
         public void DelAbsence(Absence absence)
         {
             if (access.Manager != null)
@@ -106,6 +128,11 @@ namespace mediatek86.dal
             }
         }
 
+        /// <summary>
+        /// Demande de modification d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à modifier</param>
+        /// <param name="absenceOriginal">objet absence avant modification</param>
         public void UpdateAbsence(Absence absence, Absence absenceOriginal)
         {
             if (access.Manager != null)

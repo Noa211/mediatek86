@@ -17,31 +17,56 @@ namespace mediatek86.vue
 {
     public partial class frmPersonnel : Form
     {
-
+        /// <summary>
+        /// Booléen pour savoir si une modification du personnel est demandée
+        /// </summary>
         private Boolean enCoursDeModifPersonnel = false;
-
+        /// <summary>
+        /// Booléen pour savoir si une modification d'une absence est demandée
+        /// </summary>
         private Boolean enCoursDeModifAbsence = false;
-
+        /// <summary>
+        /// Controleur de la fenêtre
+        /// </summary>
         private FrmPersonnelController controller;
-
+        /// <summary>
+        /// Membre du personnel dont les absences sont en train d'être gérées
+        /// </summary>
         private Personnel personnelModifAbs;
-
+        /// <summary>
+        /// Objet pour gérer la liste du personnel
+        /// </summary>
         private readonly BindingSource bdgPersonnel = new BindingSource();
-
+        /// <summary>
+        /// Objet pour gérer la liste des service
+        /// </summary>
         private readonly BindingSource bdgService = new BindingSource();
-
+        /// <summary>
+        /// Objet pour gérer la liste des motifs
+        /// </summary>
         private readonly BindingSource bdgMotif = new BindingSource();
-
+        /// <summary>
+        /// Objet pour gérer la liste des absences
+        /// </summary>
         private readonly BindingSource bdgAbsence = new BindingSource();
-
+        /// <summary>
+        /// Titre des fenêtres d'information
+        /// </summary>
         private readonly String titreFenetreInformation = "Information";
 
+        /// <summary>
+        /// Construction des composants graphiques et appel des autres initialisations
+        /// </summary>
         public frmPersonnel()
         {
             InitializeComponent();
             Init();
         }
 
+        /// <summary>
+        /// Initialisations :
+        /// Création du controleur et remplissage des listes
+        /// </summary>
         private void Init()
         {
             controller = new FrmPersonnelController();
@@ -51,6 +76,9 @@ namespace mediatek86.vue
             EnCoursModifPersonnel(false);
         }
 
+        /// <summary>
+        /// Affiche le personnel
+        /// </summary>
         private void RemplirListePersonnel()
         {
             List<Personnel> lePersonnel = controller.GetPersonnel();
@@ -60,6 +88,9 @@ namespace mediatek86.vue
             dgvPersonnel.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
+        /// <summary>
+        /// Affiche les services
+        /// </summary>
         private void RemplirListeService()
         {
             List<Service> lesServices = controller.GetLesServices();
@@ -67,6 +98,9 @@ namespace mediatek86.vue
             cmbService.DataSource = bdgService;
         }
 
+        /// <summary>
+        /// Affiche les motifs
+        /// </summary>
         private void RemplirListeMotif()
         {
             List<Motif> lesMotifs = controller.GetLesMotifs();
@@ -74,6 +108,9 @@ namespace mediatek86.vue
             cmbMotif.DataSource = bdgMotif;
         }
 
+        /// <summary>
+        /// Affiche les absences
+        /// </summary>
         private void RemplirListeAbsence(Personnel personnel)
         {
             List<Absence> lesAbsences = controller.GetLesAbsences(personnel);
@@ -81,6 +118,11 @@ namespace mediatek86.vue
             dgvAbsences.DataSource = bdgAbsence;
         }
 
+        /// <summary>
+        /// Demande d'enregistrement d'un ajout ou modification de personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSavePer_Click(object sender, EventArgs e)
         {
             if (!txtNom.Text.Equals("") && !txtPrenom.Text.Equals("") && !txtTel.Text.Equals("") && !txtMail.Text.Equals("") && cmbService.SelectedIndex != -1)
@@ -108,7 +150,10 @@ namespace mediatek86.vue
                 EnCoursModifPersonnel(false);
             }
         }
-
+        /// <summary>
+        /// Modification d'affichage suivant si on est en cours de modif ou d'ajout de personnel
+        /// </summary>
+        /// <param name="modif"></param>
         private void EnCoursModifPersonnel(Boolean modif)
         {
             enCoursDeModifPersonnel = modif;
@@ -127,6 +172,12 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande d'annulation d'ajout ou de modification de personnel
+        /// Vide les champs de texte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnulPer_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -135,6 +186,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande de suppression du personnel sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimerPer_Click(object sender, EventArgs e)
         {
             if (dgvPersonnel.SelectedRows.Count > 0)
@@ -152,6 +208,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande de modification du personnel sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifierPer_Click(object sender, EventArgs e)
         {
             if (dgvPersonnel.SelectedRows.Count > 0)
@@ -170,6 +231,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande de gestion des absences du personnel sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGererAbs_Click(object sender, EventArgs e)
         {
             if (dgvPersonnel.SelectedRows.Count > 0)
@@ -184,6 +250,10 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Changement d'interface pour activer ou désactiver le mode gestion d'absence
+        /// </summary>
+        /// <param name="modif"></param>
         private void GererAbsences(Boolean modif)
         {
             grbAbsences.Enabled = modif;
@@ -195,6 +265,11 @@ namespace mediatek86.vue
             cmbMotif.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Demande d'enregistement d'un ajout ou d'une mofication d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveAbs_Click(object sender, EventArgs e)
         {
             if (dtpDebut.Value > dtpDebut.MinDate && dtpDebut.Value < dtpDebut.MaxDate && dtpFin.Value > dtpFin.MinDate && dtpFin.Value < dtpFin.MaxDate && cmbMotif.SelectedIndex != -1 && dtpFin.Value >= dtpDebut.Value)
@@ -224,6 +299,10 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Modification d'affichage suivant si on est en cours de modif ou d'ajout d'une absence
+        /// </summary>
+        /// <param name="modif"></param>
         private void EnCoursModifAbsence(Boolean modif)
         {
             enCoursDeModifAbsence = modif;
@@ -240,6 +319,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande d'annulation de l'ajout ou d'une modification d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAnnulAbs_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -248,6 +332,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande de suppression d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimerAbs_Click(object sender, EventArgs e)
         {
             if (dgvAbsences.SelectedRows.Count > 0)
@@ -265,6 +354,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande de modification d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModifAbs_Click(object sender, EventArgs e)
         {
             if (dgvAbsences.SelectedRows.Count > 0)
@@ -281,6 +375,11 @@ namespace mediatek86.vue
             }
         }
 
+        /// <summary>
+        /// Demande de sortir du mode gestion des absences
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRetour_Click(object sender, EventArgs e)
         {
             GererAbsences(false);

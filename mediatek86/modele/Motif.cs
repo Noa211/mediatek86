@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace mediatek86.modele
 {
+    /// <summary>
+    /// Classe métier pour les motifs
+    /// </summary>
     class Motif
     {
         public int Idmotif { get; }
@@ -22,6 +25,10 @@ namespace mediatek86.modele
             this.Libelle = libelle;
         }
 
+        /// <summary>
+        /// Définit l'information à afficher (le libelle)
+        /// </summary>
+        /// <returns>libelle du motif</returns>
         public override string ToString()
         {
             return this.Libelle;

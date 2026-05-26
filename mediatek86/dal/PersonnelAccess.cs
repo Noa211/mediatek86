@@ -60,6 +60,10 @@ namespace mediatek86.dal
             return false;
         }
 
+        /// <summary>
+        /// Récupère et retourne les membres du personnel
+        /// </summary>
+        /// <returns>liste du personnel</returns>
         public List<Personnel> GetPersonnel()
         {
             List<Personnel> lePersonnel = new List<Personnel>();
@@ -94,6 +98,10 @@ namespace mediatek86.dal
             return lePersonnel;
         }
 
+        /// <summary>
+        /// Demande d'ajout de personnel
+        /// </summary>
+        /// <param name="personnel">objet personnel à ajouter</param>
         public void AddPersonnel(Personnel personnel)
         {
             if (access.Manager != null)
@@ -121,6 +129,10 @@ namespace mediatek86.dal
             }
         }
 
+        /// <summary>
+        /// Demande de suppression de personnel
+        /// </summary>
+        /// <param name="personnel">objet personnel à supprimer</param>
         public void DelPersonnel(Personnel personnel)
         {
             if (access.Manager != null)
@@ -143,6 +155,10 @@ namespace mediatek86.dal
             }
         }
 
+        /// <summary>
+        /// Demande de modification de personnel
+        /// </summary>
+        /// <param name="personnel">objet personnel à modifier</param>
         public void UpdatePersonnel(Personnel personnel)
         {
             if (access.Manager != null)

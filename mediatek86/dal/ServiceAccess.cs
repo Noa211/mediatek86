@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace mediatek86.dal
 {
+    /// <summary>
+    /// Classe permettant de gérer les demandes concernant les services
+    /// </summary>
     class ServiceAccess
     {
         /// <summary>
@@ -23,6 +26,10 @@ namespace mediatek86.dal
             access = Access.GetInstance();
         }
 
+        /// <summary>
+        /// Récupère et retourne les services
+        /// </summary>
+        /// <returns>liste des services</returns>
         public List<Service> GetLesServices()
         {
             List<Service> lesServices = new List<Service>();
