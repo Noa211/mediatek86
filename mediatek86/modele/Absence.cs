@@ -12,9 +12,9 @@ namespace mediatek86.modele
     class Absence
     {
         public Personnel Personnel { get; }
-        public DateTime Datedebut { get; }
-        public DateTime Datefin { get; }
-        public Motif Motif { get; }
+        public DateTime Datedebut { get; set; }
+        public DateTime Datefin { get; set; }
+        public Motif Motif { get; set; }
 
         /// <summary>
         /// Valorise les propriétés

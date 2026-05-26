@@ -105,5 +105,32 @@ namespace mediatek86.dal
                 }
             }
         }
+
+        public void UpdateAbsence(Absence absence, Absence absenceOriginal)
+        {
+            if (access.Manager != null)
+            {
+                string req = "update absence set datedebut = @datedebut, datefin = @datefin, idmotif = @idmotif ";
+                req += "where idpersonnel = @idpersonnel and datedebut = @datedebutoriginal;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "@datedebut", absence.Datedebut },
+                    { "@datefin", absence.Datefin },
+                    { "@idmotif", absence.Motif.Idmotif },
+                    { "@idpersonnel", absence.Personnel.Idpersonnel },
+                    { "@datedebutoriginal", absenceOriginal.Datedebut }
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("AbsenceAccess.UpdateAbsence catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
     }
 }

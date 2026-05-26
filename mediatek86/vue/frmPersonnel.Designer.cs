@@ -356,6 +356,7 @@ namespace mediatek86.vue
             this.btnRetour.TabIndex = 3;
             this.btnRetour.Text = "retour";
             this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
             // btnSupprimerAbs
             // 
@@ -375,6 +376,7 @@ namespace mediatek86.vue
             this.btnModifAbs.TabIndex = 1;
             this.btnModifAbs.Text = "modifier";
             this.btnModifAbs.UseVisualStyleBackColor = true;
+            this.btnModifAbs.Click += new System.EventHandler(this.btnModifAbs_Click);
             // 
             // dgvAbsences
             // 

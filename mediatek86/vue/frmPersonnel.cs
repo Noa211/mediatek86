@@ -187,6 +187,7 @@ namespace mediatek86.vue
         private void GererAbsences(Boolean modif)
         {
             grbAbsences.Enabled = modif;
+            grbAddAbs.Enabled = modif;
             grbPersonnel.Enabled = !modif;
             grbAddPer.Enabled = !modif;
             dtpDebut.Value = System.DateTime.Today;
@@ -201,7 +202,12 @@ namespace mediatek86.vue
                 Motif motif = (Motif)bdgMotif.List[bdgMotif.Position];
                 if (enCoursDeModifAbsence)
                 {
-                    return;
+                    Absence absence = (Absence)bdgAbsence.List[bdgAbsence.Position];
+                    Absence absenceOriginal = new Absence(absence.Personnel, absence.Datedebut, absence.Datefin, absence.Motif);
+                    absence.Datedebut = dtpDebut.Value;
+                    absence.Datefin = dtpFin.Value;
+                    absence.Motif = motif;
+                    controller.UpdateAbsence(absence, absenceOriginal);
                 }
                 else
                 {
@@ -257,6 +263,27 @@ namespace mediatek86.vue
             {
                 MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
             }
+        }
+
+        private void btnModifAbs_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                EnCoursModifAbsence(true);
+                Absence absence = (Absence)bdgAbsence.List[bdgAbsence.Position];
+                dtpDebut.Value = absence.Datedebut;
+                dtpFin.Value = absence.Datefin;
+                cmbMotif.SelectedIndex = cmbMotif.FindStringExact(absence.Motif.Libelle);
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", titreFenetreInformation);
+            }
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            GererAbsences(false);
         }
     }
 }
