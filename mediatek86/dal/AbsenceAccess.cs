@@ -56,5 +56,31 @@ namespace mediatek86.dal
             }
             return lesAbsences;
         }
+
+        public void AddAbsence(Absence absence)
+        {
+            if (access.Manager != null)
+            {
+                string req = "insert into absence(idpersonnel, datedebut, datefin, idmotif) ";
+                req += "values (@idpersonnel, @datedebut, @datefin, @idmotif);";
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    { "@idpersonnel", absence.Personnel.Idpersonnel },
+                    { "@datedebut", absence.Datedebut },
+                    { "@datefin", absence.Datefin },
+                    { "@idmotif", absence.Motif.Idmotif }
+                };
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("AbsenceAccess.AddAbsence catch req={0} erreur={1}", req, e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
     }
 }

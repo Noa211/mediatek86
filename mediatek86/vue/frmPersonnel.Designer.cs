@@ -249,7 +249,6 @@ namespace mediatek86.vue
             // 
             // grbAbsences
             // 
-            this.grbAbsences.Controls.Add(this.grbAddAbs);
             this.grbAbsences.Controls.Add(this.btnRetour);
             this.grbAbsences.Controls.Add(this.btnSupprimerAbs);
             this.grbAbsences.Controls.Add(this.btnModifAbs);
@@ -257,7 +256,7 @@ namespace mediatek86.vue
             this.grbAbsences.Enabled = false;
             this.grbAbsences.Location = new System.Drawing.Point(13, 500);
             this.grbAbsences.Name = "grbAbsences";
-            this.grbAbsences.Size = new System.Drawing.Size(775, 336);
+            this.grbAbsences.Size = new System.Drawing.Size(775, 216);
             this.grbAbsences.TabIndex = 2;
             this.grbAbsences.TabStop = false;
             this.grbAbsences.Text = "absences";
@@ -272,7 +271,7 @@ namespace mediatek86.vue
             this.grbAddAbs.Controls.Add(this.dtpDebut);
             this.grbAddAbs.Controls.Add(this.label6);
             this.grbAddAbs.Controls.Add(this.label5);
-            this.grbAddAbs.Location = new System.Drawing.Point(7, 211);
+            this.grbAddAbs.Location = new System.Drawing.Point(19, 722);
             this.grbAddAbs.Name = "grbAddAbs";
             this.grbAddAbs.Size = new System.Drawing.Size(762, 119);
             this.grbAddAbs.TabIndex = 4;
@@ -296,6 +295,7 @@ namespace mediatek86.vue
             this.btnSaveAbs.TabIndex = 6;
             this.btnSaveAbs.Text = "enregistrer";
             this.btnSaveAbs.UseVisualStyleBackColor = true;
+            this.btnSaveAbs.Click += new System.EventHandler(this.btnSaveAbs_Click);
             // 
             // label7
             // 
@@ -391,7 +391,8 @@ namespace mediatek86.vue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 848);
+            this.ClientSize = new System.Drawing.Size(800, 853);
+            this.Controls.Add(this.grbAddAbs);
             this.Controls.Add(this.grbAbsences);
             this.Controls.Add(this.grbAddPer);
             this.Controls.Add(this.grbPersonnel);

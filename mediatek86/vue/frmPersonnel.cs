@@ -20,7 +20,11 @@ namespace mediatek86.vue
 
         private Boolean enCoursDeModifPersonnel = false;
 
+        private Boolean enCoursDeModifAbsence = false;
+
         private FrmPersonnelController controller;
+
+        private Personnel personnelModifAbs;
 
         private readonly BindingSource bdgPersonnel = new BindingSource();
 
@@ -170,10 +174,9 @@ namespace mediatek86.vue
         {
             if (dgvPersonnel.SelectedRows.Count > 0)
             {
-                Personnel personnel = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
-                RemplirListeAbsence(personnel);
+                personnelModifAbs = (Personnel)bdgPersonnel.List[bdgPersonnel.Position];
+                RemplirListeAbsence(personnelModifAbs);
                 GererAbsences(true);
-                
             }
             else
             {
@@ -189,6 +192,46 @@ namespace mediatek86.vue
             dtpDebut.Value = System.DateTime.Today;
             dtpFin.Value = System.DateTime.Today;
             cmbMotif.SelectedIndex = -1;
+        }
+
+        private void btnSaveAbs_Click(object sender, EventArgs e)
+        {
+            if (dtpDebut.Value > dtpDebut.MinDate && dtpDebut.Value < dtpDebut.MaxDate && dtpFin.Value > dtpFin.MinDate && dtpFin.Value < dtpFin.MaxDate && cmbMotif.SelectedIndex != -1 && dtpFin.Value >= dtpDebut.Value)
+            {
+                Motif motif = (Motif)bdgMotif.List[bdgMotif.Position];
+                if (enCoursDeModifAbsence)
+                {
+                    return;
+                }
+                else
+                {
+                    Absence absence = new Absence(personnelModifAbs, dtpDebut.Value, dtpFin.Value, motif);
+                    controller.AddAbsence(absence);
+                }
+                RemplirListeAbsence(personnelModifAbs);
+                EnCoursModifAbsence(false);
+
+            }
+            else
+            {
+                MessageBox.Show("Tous les champs doivent être remplis.", titreFenetreInformation);
+            }
+        }
+
+        private void EnCoursModifAbsence(Boolean modif)
+        {
+            enCoursDeModifAbsence = modif;
+            grbAbsences.Enabled = !modif;
+            if (modif)
+            {
+                grbAddAbs.Text = "modifier une absence";
+            } 
+            else
+            {
+                grbAddAbs.Text = "ajouter une absence";
+                dtpDebut.Value = System.DateTime.Today;
+                dtpFin.Value = System.DateTime.Today;
+            }
         }
     }
 }
