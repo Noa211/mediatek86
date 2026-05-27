@@ -149,6 +149,10 @@ namespace mediatek86.vue
                 RemplirListePersonnel();
                 EnCoursModifPersonnel(false);
             }
+            else
+            {
+                MessageBox.Show("Tous les champs doivent être remplis.", titreFenetreInformation);
+            }
         }
         /// <summary>
         /// Modification d'affichage suivant si on est en cours de modif ou d'ajout de personnel
@@ -160,11 +164,11 @@ namespace mediatek86.vue
             grbPersonnel.Enabled = !modif;
             if (modif)
             {
-                grbPersonnel.Text = "modifier le personnel";
+                grbAddPer.Text = "modifier le personnel";
             }
             else
             {
-                grbPersonnel.Text = "ajouter du personnel";
+                grbAddPer.Text = "ajouter du personnel";
                 txtNom.Text = "";
                 txtPrenom.Text = "";
                 txtTel.Text = "";
