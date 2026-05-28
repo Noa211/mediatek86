@@ -33,4 +33,8 @@ Pour tester une version dans un environnement de développement, il faut d'abord
 . De préférence un IDE pour manipuler le code (cette application a été réalisée sous Visual Studio 2022)  
 Il faut ensuite :  
 . Dans MySQL, exécuter le script contenu dans mediatek866_bdd.sql (présent en racine du dépôt) pour créer et remplir la BDD.
-. Récupérer le code du commit voulu, l'ouvrir dans l'IDE et l'exécuter.
+. Récupérer le code du commit voulu, l'ouvrir dans l'IDE et l'exécuter.  
+
+__Voici le login et le mot de passe pour s'authentifier dans l'application:__  
+. login: mediatekres  
+. mdp: mediatek86
